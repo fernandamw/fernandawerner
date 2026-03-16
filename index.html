@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fernanda Werner — Advocacia Criminal Federal</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --obsidian: #0D0D0F;
+  --onyx: #1A1A1E;
+  --onyx-light: #222226;
+  --wine: #8B3A3A;
+  --wine-light: #A64B4B;
+  --wine-dark: #6E2E2E;
+  --ivory: #E8E0D8;
+  --ivory-warm: #DDD5CC;
+  --taupe: #4A4045;
+  --taupe-light: #5A5055;
+  --text-primary: #E8E0D8;
+  --text-secondary: #A09892;
+  --text-muted: #6B6368;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--obsidian);
+  color: var(--text-primary);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--obsidian); }
+::-webkit-scrollbar-thumb { background: var(--taupe); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--wine); }
+::selection { background: var(--wine); color: var(--ivory); }
+
+/* ========== NAV ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 1.5rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.5s ease;
+}
+
+nav.scrolled {
+  background: rgba(13, 13, 15, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 1rem 4rem;
+  border-bottom: 1px solid rgba(139, 58, 58, 0.12);
+}
+
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.1rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+.nav-brand span { color: var(--wine); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--wine);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--text-primary); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 0.6rem 1.6rem;
+  border: 1px solid var(--wine);
+  color: var(--wine);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.nav-cta:hover { background: var(--wine); color: var(--ivory); }
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.mobile-menu-btn span {
+  display: block;
+  width: 22px; height: 1px;
+  background: var(--text-primary);
+  margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  padding: 0 0 6rem 4rem;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.3s;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(2.8rem, 5vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.5s;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--wine);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 440px;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.7s;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.9s;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.9rem 2rem;
+  background: var(--wine);
+  color: var(--ivory);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover {
+  background: var(--wine-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(139, 58, 58, 0.3);
+}
+.btn-primary svg {
+  width: 15px; height: 15px;
+  transition: transform 0.3s ease;
+}
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-ghost {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+.btn-ghost:hover { color: var(--text-primary); }
+
+/* Hero photo */
+.hero-photo {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards 0.4s;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
+  filter: brightness(0.85) contrast(1.05);
+}
+
+.hero-photo::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(
+    to right,
+    var(--obsidian) 0%,
+    rgba(13,13,15,0.7) 15%,
+    rgba(13,13,15,0.1) 50%,
+    transparent 100%
+  );
+}
+
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 30%;
+  background: linear-gradient(to top, var(--obsidian), transparent);
+  z-index: 1;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 1.3s;
+  z-index: 3;
+}
+
+.hero-scroll span {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-line {
+  width: 40px; height: 1px;
+  background: linear-gradient(to right, var(--wine), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+/* ========== DIVIDER ========== */
+.section-divider {
+  padding: 0 4rem;
+}
+.section-divider .line {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(139, 58, 58, 0.25), transparent);
+}
+
+/* ========== CREDENTIALS ========== */
+.credentials {
+  padding: 3rem 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+}
+
+.credential-item { text-align: center; }
+
+.credential-item .number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: var(--wine);
+  line-height: 1;
+}
+
+.credential-item .label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+/* ========== ABOUT ========== */
+.about {
+  padding: 8rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.about-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 2rem;
+}
+
+.about h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.25;
+  margin-bottom: 2rem;
+}
+
+.about-text {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+.about-text p + p { margin-top: 1.5rem; }
+
+.about-highlight {
+  padding: 2.5rem;
+  border-left: 2px solid var(--wine);
+  background: rgba(139, 58, 58, 0.05);
+  margin-top: 3rem;
+}
+
+.about-highlight p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--ivory);
+}
+
+/* ========== AREAS ========== */
+.areas { padding: 8rem 4rem; }
+
+.areas-header {
+  margin-bottom: 5rem;
+}
+
+.areas-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.25;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(139, 58, 58, 0.08);
+}
+
+.area-card {
+  background: var(--obsidian);
+  padding: 2.8rem;
+  position: relative;
+  transition: all 0.4s ease;
+  cursor: default;
+  overflow: hidden;
+}
+
+.area-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--wine);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.area-card:hover::before { transform: scaleX(1); }
+.area-card:hover { background: var(--onyx); }
+
+.area-number {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.8rem;
+  color: rgba(139, 58, 58, 0.12);
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 1.2rem;
+  transition: color 0.4s ease;
+}
+.area-card:hover .area-number { color: rgba(139, 58, 58, 0.3); }
+
+.area-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.area-card p {
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* ========== APPROACH ========== */
+.approach {
+  padding: 8rem 4rem;
+  background: var(--onyx);
+  position: relative;
+}
+
+.approach::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(139, 58, 58, 0.04) 0%, transparent 50%);
+}
+
+.approach-inner {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.approach-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 2rem;
+}
+
+.approach h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.3;
+  margin-bottom: 3rem;
+}
+
+.approach-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  text-align: left;
+  margin-top: 3.5rem;
+}
+
+.approach-step {
+  position: relative;
+  padding-top: 2rem;
+}
+.approach-step::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 28px; height: 1px;
+  background: var(--wine);
+}
+
+.approach-step h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0.7rem;
+}
+
+.approach-step p {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ========== URGENCY ========== */
+.urgency {
+  padding: 8rem 4rem;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+}
+
+.urgency-content { flex: 1; }
+
+.urgency-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--wine);
+  margin-bottom: 2rem;
+}
+
+.urgency h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.25;
+  margin-bottom: 2rem;
+}
+
+.urgency-text {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  margin-bottom: 2.5rem;
+}
+
+.urgency-contact {
+  flex: 0 0 370px;
+  background: var(--onyx);
+  padding: 2.8rem;
+  position: relative;
+}
+
+.urgency-contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(to right, var(--wine), transparent);
+}
+
+.contact-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+.contact-item { margin-bottom: 1.5rem; }
+
+.contact-item .type {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.contact-item a, .contact-item .value {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+.contact-item a:hover { color: var(--wine); }
+
+.contact-privacy {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.contact-privacy svg {
+  width: 15px; height: 15px;
+  color: var(--taupe-light);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.contact-privacy p {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  padding: 2.5rem 4rem;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.footer-oab {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.footer-meta {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  display: flex;
+  gap: 2rem;
+}
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  nav { padding: 1.2rem 2rem; }
+  nav.scrolled { padding: 0.8rem 2rem; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-content { padding: 40vh 2rem 4rem; }
+  .hero-photo {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    height: 100%;
+  }
+  .hero-photo::after {
+    background: linear-gradient(
+      to top,
+      var(--obsidian) 0%,
+      rgba(13,13,15,0.85) 40%,
+      rgba(13,13,15,0.5) 70%,
+      rgba(13,13,15,0.3) 100%
+    );
+  }
+  .about { grid-template-columns: 1fr; gap: 3rem; padding: 5rem 2rem; }
+  .areas { padding: 5rem 2rem; }
+  .areas-grid { grid-template-columns: 1fr; }
+  .approach { padding: 5rem 2rem; }
+  .urgency { flex-direction: column; padding: 5rem 2rem; gap: 3rem; }
+  .urgency-contact { flex: none; width: 100%; }
+  .credentials { gap: 2.5rem; padding: 2.5rem 2rem; }
+  footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+  .hero-scroll { left: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .nav-links, .nav-cta { display: none; }
+  .mobile-menu-btn { display: block; }
+  .hero h1 { font-size: clamp(2rem, 8vw, 3.2rem); }
+  .hero-scroll { display: none; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .approach-steps { grid-template-columns: 1fr; gap: 2rem; }
+  .credentials { flex-direction: column; align-items: center; gap: 1.5rem; }
+}
+
+/* ========== FLOATING WHATSAPP ========== */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: var(--wine);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(139, 58, 58, 0.3);
+  position: relative;
+}
+
+.whatsapp-float a:hover {
+  background: var(--wine-light);
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(139, 58, 58, 0.45);
+}
+
+.whatsapp-float a svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--ivory);
+}
+
+.whatsapp-label {
+  position: absolute;
+  right: 68px;
+  background: var(--onyx);
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  border: 1px solid rgba(139, 58, 58, 0.15);
+}
+
+.whatsapp-float:hover .whatsapp-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.whatsapp-float a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid var(--wine);
+  animation: whatsappPulse 3s ease infinite;
+}
+
+@keyframes whatsappPulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.25); opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .whatsapp-float { bottom: 1.2rem; right: 1.2rem; }
+  .whatsapp-label { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">Fernanda <span>Werner</span></a>
+  <ul class="nav-links">
+    <li><a href="#diferencial">Diferencial</a></li>
+    <li><a href="#atuacao">Atuação</a></li>
+    <li><a href="#metodo">Método</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/554731702300" target="_blank" class="nav-cta">WhatsApp sigiloso</a>
+  <button class="mobile-menu-btn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">Advocacia Criminal Federal · Balneário Camboriú/SC</div>
+    <h1>Defesa estratégica<br>em crimes <em>federais</em></h1>
+    <p class="hero-sub">Quando a Polícia Federal bate à porta, você precisa de quem já esteve do outro lado — e sabe exatamente como o sistema decide.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/554731702300" target="_blank" class="btn-primary">
+        Contato sigiloso
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#diferencial" class="btn-ghost">Conheça o diferencial ↓</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="foto.jpg" alt="Fernanda Werner — Advogada Criminalista" />
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<div class="section-divider"><div class="line"></div></div>
+<section class="credentials">
+  <div class="credential-item reveal">
+    <div class="number">27</div>
+    <div class="label">Anos de atuação jurídica</div>
+  </div>
+  <div class="credential-item reveal">
+    <div class="number">TRF-4</div>
+    <div class="label">Assessora de Gabinete</div>
+  </div>
+  <div class="credential-item reveal">
+    <div class="number">STJ</div>
+    <div class="label">Atuação em Tribunais Superiores</div>
+  </div>
+  <div class="credential-item reveal">
+    <div class="number">SC</div>
+    <div class="label">OAB/SC 69022</div>
+  </div>
+</section>
+<div class="section-divider"><div class="line"></div></div>
+
+<!-- ABOUT -->
+<section class="about" id="diferencial">
+  <div class="reveal">
+    <div class="about-label">Diferencial</div>
+    <h2>A perspectiva de quem conhece o sistema por dentro</h2>
+    <div class="about-text">
+      <p>Antes de defender, Fernanda Werner passou anos dentro da Justiça Federal — como analista técnica, supervisora de secretaria, diretora e assessora de gabinete no TRF-4. Conheceu os bastidores das decisões, os critérios que pesam quando o processo chega à mesa do juiz, a lógica interna que raramente aparece nos autos.</p>
+      <p>Essa experiência não é um item de currículo. É o que define a forma como cada defesa é construída: com domínio absoluto sobre o que funciona, o que é ruído, e onde está a vulnerabilidade da acusação.</p>
+    </div>
+  </div>
+  <div class="reveal">
+    <div class="about-highlight">
+      <p>A defesa começa antes da denúncia. Nos crimes federais, o momento da intervenção define o desfecho. Cada hora conta.</p>
+    </div>
+    <div class="about-text" style="margin-top: 3rem;">
+      <p>Atuação nacional com base em Balneário Camboriú/SC. Atendimento presencial e remoto, com total sigilo. Disponibilidade imediata para situações de urgência — busca e apreensão, prisão em flagrante, condução coercitiva, operações deflagradas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS -->
+<section class="areas" id="atuacao">
+  <div class="areas-header reveal">
+    <div class="about-label">Áreas de atuação</div>
+    <h2>Defesa em crimes federais<br>de alta complexidade</h2>
+  </div>
+  <div class="areas-grid">
+    <div class="area-card reveal">
+      <div class="area-number">01</div>
+      <h3>Crimes Financeiros e Tributários</h3>
+      <p>Evasão de divisas, sonegação fiscal, crimes contra o sistema financeiro nacional, operações cambiais irregulares. Defesa técnica desde o inquérito policial até os tribunais superiores.</p>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-number">02</div>
+      <h3>Lavagem de Capitais e Criptoativos</h3>
+      <p>Acusações de ocultação patrimonial, movimentações atípicas, compliance falho. Inclui defesa em operações envolvendo criptoativos e novas tecnologias financeiras.</p>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-number">03</div>
+      <h3>Operações da Polícia Federal</h3>
+      <p>Acompanhamento integral — da deflagração ao arquivamento. Análise de provas, identificação de nulidades, habeas corpus preventivo e liberatório, estratégia de contenção de danos.</p>
+    </div>
+    <div class="area-card reveal">
+      <div class="area-number">04</div>
+      <h3>Recursos aos Tribunais Superiores</h3>
+      <p>Recursos especiais e extraordinários com domínio da lógica decisória do STJ e STF. Sustentação oral. Memoriais estratégicos. A experiência institucional aplicada onde a decisão final acontece.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach" id="metodo">
+  <div class="approach-inner">
+    <div class="approach-label reveal">Método</div>
+    <h2 class="reveal">Três pilares que definem<br>cada defesa</h2>
+    <div class="approach-steps">
+      <div class="approach-step reveal">
+        <h4>Intervenção imediata</h4>
+        <p>Disponibilidade para atendimento emergencial. Nos crimes federais, as primeiras horas após a deflagração de uma operação são decisivas para o resultado final.</p>
+      </div>
+      <div class="approach-step reveal">
+        <h4>Visão institucional</h4>
+        <p>Conhecimento profundo do funcionamento interno da Justiça Federal. A defesa é construída com base no que o julgador precisa ver — não no que a advocacia costuma repetir.</p>
+      </div>
+      <div class="approach-step reveal">
+        <h4>Sigilo absoluto</h4>
+        <p>Toda comunicação ocorre em canal seguro. Reuniões presenciais ou remotas com protocolo de confidencialidade. A discrição é inegociável.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<section class="urgency" id="contato">
+  <div class="urgency-content reveal">
+    <div class="urgency-label">Contato</div>
+    <h2>Se a situação é urgente,<br>o tempo corre contra você</h2>
+    <p class="urgency-text">Operação deflagrada. Mandado de busca. Intimação do MPF. Bloqueio de ativos. Cada uma dessas situações exige intervenção técnica imediata. A primeira ligação precisa ser para quem sabe o que fazer — e já está pronta para agir.</p>
+    <a href="https://wa.me/554731702300" target="_blank" class="btn-primary">
+      Fale agora
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="urgency-contact reveal">
+    <div class="contact-label">Canais de contato direto</div>
+    <div class="contact-item">
+      <div class="type">WhatsApp</div>
+      <a href="https://wa.me/554731702300" target="_blank">(47) 3170-2300</a>
+    </div>
+    <div class="contact-item">
+      <div class="type">E-mail</div>
+      <a href="mailto:advfernanda@icloud.com">advfernanda@icloud.com</a>
+    </div>
+    <div class="contact-item">
+      <div class="type">Localização</div>
+      <div class="value">Balneário Camboriú/SC — Atuação nacional</div>
+    </div>
+    <div class="contact-privacy">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      <p>Toda comunicação com o escritório é protegida pelo sigilo profissional (art. 7º, II, do Estatuto da OAB).</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Fernanda Werner</div>
+  <div class="footer-oab">OAB/SC 69022 · Advocacia Criminal Federal</div>
+  <div class="footer-meta">
+    <span>Balneário Camboriú/SC</span>
+    <span>© 2026</span>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(el => observer.observe(el));
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+<!-- FLOATING WHATSAPP -->
+<div class="whatsapp-float">
+  <span class="whatsapp-label">Contato sigiloso</span>
+  <a href="https://wa.me/554731702300" target="_blank" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+</body>
+</html>
