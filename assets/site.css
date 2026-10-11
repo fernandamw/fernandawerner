@@ -2,6 +2,7 @@
    Identidade Obsidian & Wine. Folha única para todas as páginas. */
 
 :root {
+  color-scheme: dark;
   --obsidian: #0D0D0F;
   --onyx: #1A1A1E;
   --onyx-light: #222226;
