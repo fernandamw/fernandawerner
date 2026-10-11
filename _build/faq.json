@@ -1,0 +1,73 @@
+[
+  {
+    "grupo": "Atuação e atendimento",
+    "itens": [
+      {
+        "q": "Em que áreas a advogada Fernanda Werner atua?",
+        "destaque": true,
+        "a": "<p>Fernanda Werner é advogada criminalista (OAB/SC 69.022) e concentra o trabalho em duas frentes: <a href=\"{{root}}crimes-federais/\">crimes de competência federal</a>, como crimes contra o sistema financeiro, lavagem de dinheiro e crimes tributários, e <a href=\"{{root}}defesa-criminal-de-medicos/\">defesa criminal de médicos</a>. Atua na Justiça Federal, na Justiça Estadual e nos tribunais superiores.</p>"
+      },
+      {
+        "q": "A advogada atende clientes fora de Balneário Camboriú e de Santa Catarina?",
+        "a": "<p>Sim. O escritório fica em Balneário Camboriú/SC, e o atendimento também é feito por videoconferência. Os processos criminais tramitam em meio eletrônico, o que permite a atuação em varas e tribunais de qualquer estado.</p>"
+      },
+      {
+        "q": "Como é feito o primeiro contato e como fica o sigilo?",
+        "a": "<p>O primeiro contato é feito pelo WhatsApp (47) 3170-2300 ou pelo e-mail advfernanda@icloud.com. O advogado tem o dever de guardar sigilo sobre os fatos de que toma conhecimento no exercício da profissão (Código de Ética e Disciplina da OAB, arts. 35 a 38), e as comunicações relativas ao exercício da advocacia são invioláveis (Lei 8.906/1994, art. 7º, II). O sigilo vale mesmo que não haja contratação.</p>"
+      },
+      {
+        "q": "Onde tramitam os processos da Justiça Federal de quem mora em Balneário Camboriú?",
+        "a": "<p>Balneário Camboriú integra a Subseção Judiciária de Itajaí da Justiça Federal de Santa Catarina. Os recursos são julgados pelo Tribunal Regional Federal da 4ª Região, com sede em Porto Alegre e jurisdição sobre Rio Grande do Sul, Santa Catarina e Paraná. O local do processo, porém, é definido pelas regras de competência do Código de Processo Penal, em geral o lugar em que o crime se consumou (art. 70), e não pelo domicílio do investigado.</p>"
+      }
+    ]
+  },
+  {
+    "grupo": "Crimes federais e Polícia Federal",
+    "itens": [
+      {
+        "q": "O que é crime federal?",
+        "destaque": true,
+        "a": "<p>É a infração penal julgada pela Justiça Federal. Segundo o art. 109 da Constituição, são federais principalmente as infrações praticadas em detrimento de bens, serviços ou interesse da União, de suas autarquias ou de suas empresas públicas (inciso IV), além de hipóteses específicas, como os crimes contra o sistema financeiro nacional e o tráfico transnacional de drogas. Os demais crimes são da Justiça Estadual. Veja o artigo <a href=\"{{root}}artigos/o-que-e-crime-federal/\">O que é crime federal e quando o caso vai para a Justiça Federal?</a></p>"
+      },
+      {
+        "q": "Fui intimado pela Polícia Federal. O que devo fazer?",
+        "destaque": true,
+        "a": "<p>Guarde a intimação, não a ignore e procure um advogado antes da data marcada. O advogado pode examinar os autos da investigação antes do depoimento (Lei 8.906/1994, art. 7º, XIV; Súmula Vinculante 14 do STF) e acompanhar o ato (art. 7º, XXI). Com o conteúdo dos autos em mãos, define-se se o melhor é prestar esclarecimentos ou exercer o direito ao silêncio. Veja o artigo <a href=\"{{root}}artigos/fui-intimado-pela-policia-federal-o-que-fazer/\">Fui intimado pela Polícia Federal: o que fazer?</a></p>"
+      },
+      {
+        "q": "Posso ficar em silêncio em um depoimento?",
+        "a": "<p>O investigado e o acusado podem. O Código de Processo Penal garante o direito de permanecer calado e de não responder às perguntas, e estabelece que o silêncio não importa confissão nem pode ser interpretado em prejuízo da defesa (art. 186). A testemunha, em regra, tem obrigação de depor (art. 206), mas não é obrigada a se autoincriminar. Por isso é importante saber, antes do ato, em que condição a pessoa será ouvida.</p>"
+      },
+      {
+        "q": "A polícia pode entrar na minha casa a qualquer hora?",
+        "a": "<p>Não. Sem consentimento do morador, a entrada depende de flagrante delito, desastre, prestação de socorro ou, durante o dia, de determinação judicial (Constituição, art. 5º, XI). O Código de Processo Penal determina que as buscas domiciliares sejam executadas de dia (art. 245), e a Lei 13.869/2019 tipifica como abuso de autoridade o cumprimento de mandado de busca e apreensão domiciliar após as 21h ou antes das 5h (art. 22, § 1º, III). Veja o artigo <a href=\"{{root}}artigos/busca-e-apreensao-da-policia-federal-quais-sao-os-meus-direitos/\">Busca e apreensão da Polícia Federal: quais são os meus direitos?</a></p>"
+      },
+      {
+        "q": "Meus bens foram apreendidos. É possível reavê-los?",
+        "a": "<p>É possível pedir a restituição. As coisas apreendidas não são devolvidas enquanto interessarem ao processo (Código de Processo Penal, art. 118). Quando não há esse interesse nem dúvida sobre o direito de quem reclama, a restituição pode ser ordenada pela autoridade policial ou pelo juiz (art. 120). O pedido deve demonstrar a propriedade do bem e a ausência de relação com o fato investigado.</p>"
+      }
+    ]
+  },
+  {
+    "grupo": "Defesa criminal de médicos",
+    "itens": [
+      {
+        "q": "Erro médico é crime?",
+        "destaque": true,
+        "a": "<p>Não existe um crime com esse nome. O médico responde criminalmente quando a morte ou a lesão do paciente decorre de imprudência, negligência ou imperícia (Código Penal, art. 18, II), hipóteses em que se aplicam os crimes de homicídio culposo (art. 121, § 3º) ou de lesão corporal culposa (art. 129, § 6º). O resultado adverso, sozinho, não configura crime. Veja o artigo <a href=\"{{root}}artigos/erro-medico-e-crime/\">Erro médico é crime? Quando o médico responde criminalmente</a></p>"
+      },
+      {
+        "q": "Processo no CRM e processo criminal podem correr ao mesmo tempo?",
+        "a": "<p>Sim. As esferas criminal, ética e cível são independentes, e o mesmo fato pode ser apurado nas três ao mesmo tempo. No Conselho Regional de Medicina, a apuração começa por sindicância, que pode resultar em arquivamento, conciliação, termo de ajustamento de conduta ou instauração de processo ético-profissional (Resolução CFM nº 2.306/2022, art. 19). As declarações prestadas em uma esfera podem ser usadas nas outras, e a defesa deve ser coordenada.</p>"
+      },
+      {
+        "q": "O médico é obrigado a ter advogado na sindicância do CRM?",
+        "a": "<p>Não é obrigado. O Código de Processo Ético-Profissional permite que a parte pratique pessoalmente os atos de defesa e faculta a representação por advogado (Resolução CFM nº 2.306/2022, art. 6º). Quando o mesmo fato também é investigado criminalmente, a presença de advogado desde a sindicância evita que a manifestação apresentada ao Conselho prejudique a defesa criminal.</p>"
+      },
+      {
+        "q": "Médico pode ser processado por denunciar irregularidades de hospital ou de plano de saúde?",
+        "a": "<p>Relatar irregularidades aos órgãos competentes não é crime, e o Código de Ética Médica trata a denúncia de atos antiéticos como dever (art. 57). A calúnia exige a imputação falsa de fato definido como crime (Código Penal, art. 138), e a denunciação caluniosa exige que o denunciante saiba que o denunciado é inocente (art. 339). Ainda assim, quem denuncia pode vir a responder a queixas-crime e sindicâncias apresentadas pelos denunciados, e a forma do relato faz diferença. Veja o artigo <a href=\"{{root}}artigos/medico-que-denuncia-irregularidades-pode-ser-processado/\">Médico que denuncia irregularidades pode ser processado criminalmente?</a></p>"
+      }
+    ]
+  }
+]
