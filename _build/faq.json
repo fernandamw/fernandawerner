@@ -3,9 +3,9 @@
     "grupo": "Atuação e atendimento",
     "itens": [
       {
-        "q": "Em que áreas a advogada Fernanda Werner atua?",
+        "q": "Em que áreas a Advogada Criminalista Fernanda Werner atua?",
         "destaque": true,
-        "a": "<p>Fernanda Werner é advogada criminalista (OAB/SC 69.022) e concentra o trabalho em duas frentes: <a href=\"{{root}}crimes-federais/\">crimes de competência federal</a>, como crimes contra o sistema financeiro, lavagem de dinheiro e crimes tributários, e <a href=\"{{root}}defesa-criminal-de-medicos/\">defesa criminal de médicos</a>. Atua na Justiça Federal, na Justiça Estadual e nos tribunais superiores.</p>"
+        "a": "<p>Fernanda Werner é Advogada Criminalista (OAB/SC 69.022) e atua na defesa em <a href=\"{{root}}crimes-federais/\">crimes de competência federal</a>, como crimes contra o sistema financeiro, lavagem de dinheiro e crimes tributários, na Justiça Federal e nos Tribunais Superiores. O escritório mantém também uma área de <a href=\"{{root}}defesa-criminal-de-medicos/\">defesa criminal de médicos</a>.</p>"
       },
       {
         "q": "A advogada atende clientes fora de Balneário Camboriú e de Santa Catarina?",

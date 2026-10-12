@@ -1,107 +1,148 @@
 <!--meta
 {
   "path": "",
-  "title": "Fernanda Werner | Advogada Criminalista em Balneário Camboriú/SC",
-  "description": "Fernanda Werner, advogada criminalista (OAB/SC 69.022) em Balneário Camboriú/SC. Atuação em crimes federais e na defesa criminal de médicos, na Justiça Federal, Estadual e nos tribunais superiores.",
+  "title": "Fernanda Werner | Advogada Criminalista · Crimes Federais · Balneário Camboriú/SC",
+  "og_title": "Fernanda Werner | Advocacia Criminal Federal",
+  "description": "Fernanda Werner, Advogada Criminalista (OAB/SC 69.022) em Balneário Camboriú/SC. Defesa em crimes federais: investigações da Polícia Federal, ações penais na Justiça Federal e recursos ao TRF-4, STJ e STF.",
   "hero": true,
-  "atualizado": "2026-10-11"
+  "atualizado": "2026-10-12"
 }
 -->
 <section class="hero">
-  <div class="hero-content">
-    <span class="label">Advocacia Criminal · Balneário Camboriú/SC</span>
-    <h1>Defesa em crimes <em>federais</em> e defesa criminal de <em>médicos</em></h1>
-    <p class="hero-sub">Fernanda Werner, advogada criminalista, OAB/SC 69.022. Atuação em investigações e ações penais na Justiça Federal e na Justiça Estadual, do inquérito aos tribunais superiores.</p>
+  <div class="hero-text">
+    <span class="eyebrow">Advocacia Criminal Federal · Balneário Camboriú/SC</span>
+    <h1>Defesa em<br>crimes<br><em>federais</em></h1>
+    <p class="hero-sub"><strong>Fernanda Werner</strong>, Advogada Criminalista, OAB/SC 69.022. Defesa em investigações da Polícia Federal e em ações penais na Justiça Federal, do inquérito aos Tribunais Superiores.</p>
     <div class="hero-actions">
-      <a href="{{wa}}" target="_blank" rel="noopener" class="btn">Contato {{arrow}}</a>
-      <a href="#atuacao" class="link-quiet">Áreas de atuação</a>
+      <a href="#situacao" class="btn">O que aconteceu? {{arrow}}</a>
+      <a href="{{wa}}" target="_blank" rel="noopener" class="btn btn--ghost">Contato</a>
     </div>
   </div>
-  <div class="hero-photo">
-    <img src="{{root}}assets/fernanda-werner.jpg" srcset="{{root}}assets/fernanda-werner-800.jpg 800w, {{root}}assets/fernanda-werner.jpg 1400w" sizes="(max-width: 1024px) 100vw, 50vw" alt="Fernanda Werner, advogada criminalista em Balneário Camboriú/SC" width="1400" height="2100" fetchpriority="high">
+  <figure class="hero-photo">
+    <img src="{{root}}assets/fernanda-werner.jpg" srcset="{{root}}assets/fernanda-werner-800.jpg 800w, {{root}}assets/fernanda-werner.jpg 1400w" sizes="(max-width: 900px) 100vw, 44vw" alt="Fernanda Werner, Advogada Criminalista em Balneário Camboriú/SC" width="1400" height="2100" fetchpriority="high">
+  </figure>
+  <ul class="hero-facts">
+    <li>OAB/SC 69.022</li>
+    <li>Pós-graduação em Ciências Criminais</li>
+    <li>Justiça Federal · TRF-4 · STJ · STF</li>
+    <li>Atendimento em todo o país</li>
+  </ul>
+</section>
+
+<section class="section" id="situacao">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Primeiros passos</span>
+      <h2>O que aconteceu?</h2>
+      <p class="lede">Escolha a situação para ver o que ela significa, o que fazer primeiro e em que lei isso está.</p>
+    </div>
+    <div class="reveal">
+      {{situacoes}}
+    </div>
   </div>
 </section>
 
-<div class="divider"><div></div></div>
-<dl class="facts">
-  <div class="reveal"><dt>Inscrição</dt><dd>OAB/SC 69.022</dd></div>
-  <div class="reveal"><dt>Formação</dt><dd>Pós-graduação em Ciências Criminais</dd></div>
-  <div class="reveal"><dt>Onde atua</dt><dd>Justiça Federal, Justiça Estadual e tribunais superiores</dd></div>
-  <div class="reveal"><dt>Atendimento</dt><dd>Balneário Camboriú/SC e todo o país</dd></div>
-</dl>
-<div class="divider"><div></div></div>
-
-<section class="section" id="atuacao">
+<section class="section section--alt" id="atuacao">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="label">Áreas de atuação</span>
-      <h2 class="title">Duas frentes de trabalho</h2>
-      <p>O escritório concentra o trabalho em dois campos da área criminal, descritos em páginas próprias.</p>
+    <div class="head head--row reveal">
+      <div>
+        <span class="eyebrow">Atuação</span>
+        <h2>Crimes de competência <em>federal</em></h2>
+      </div>
+      <a class="more" href="{{root}}crimes-federais/">Ver a área completa</a>
     </div>
-    <div class="fronts">
-      <a class="front reveal" href="{{root}}crimes-federais/">
-        <div class="num">01</div>
-        <h3>Crimes federais</h3>
-        <p>Defesa em investigações da Polícia Federal e em ações penais na Justiça Federal: crimes contra o sistema financeiro, lavagem de dinheiro, crimes tributários, descaminho, crimes contra a Previdência e a Administração Pública federal. Atuação nas medidas cautelares, na ação penal e nos recursos ao TRF-4, ao STJ e ao STF.</p>
-        <span class="more">Ver a área</span>
-      </a>
-      <a class="front reveal" href="{{root}}defesa-criminal-de-medicos/">
-        <div class="num">02</div>
+    <ul class="index reveal">
+      <li><a href="{{root}}crimes-federais/#sistema-financeiro"><span class="t">Crimes contra o sistema financeiro nacional</span><span class="ref">Lei 7.492/1986</span><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="{{root}}crimes-federais/#lavagem"><span class="t">Lavagem de dinheiro</span><span class="ref">Lei 9.613/1998</span><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="{{root}}crimes-federais/#tributarios"><span class="t">Crimes tributários, descaminho e contrabando</span><span class="ref">Lei 8.137/1990 · CP, arts. 334 e 334-A</span><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="{{root}}crimes-federais/#previdencia"><span class="t">Crimes contra a Previdência e a Administração Pública federal</span><span class="ref">CP, arts. 168-A, 171, § 3º, 312, 317, 333 e 337-A</span><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="{{root}}crimes-federais/#trafico"><span class="t">Tráfico transnacional de drogas</span><span class="ref">Lei 11.343/2006, art. 70</span><span class="arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="{{root}}crimes-federais/#operacoes"><span class="t">Operações da Polícia Federal</span><span class="ref">CPP, arts. 240 a 250</span><span class="arrow" aria-hidden="true">→</span></a></li>
+    </ul>
+    <a class="band reveal" href="{{root}}defesa-criminal-de-medicos/">
+      <div>
+        <span class="eyebrow">Área específica</span>
         <h3>Defesa criminal de médicos</h3>
-        <p>Defesa de médicos investigados ou processados por fatos ligados ao exercício da profissão, como homicídio culposo e lesão corporal culposa, e de médicos que respondem a queixas-crime, representações e sindicâncias depois de relatar irregularidades em hospitais e operadoras de planos de saúde.</p>
-        <span class="more">Ver a área</span>
-      </a>
+        <p>Investigações e ações penais por fatos ligados ao exercício da medicina, como homicídio culposo e lesão corporal culposa, com acompanhamento da sindicância no Conselho Regional de Medicina quando corre em paralelo.</p>
+      </div>
+      <span class="more">Ver a área</span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="metodo">
+  <div class="wrap method">
+    <div class="head reveal">
+      <span class="eyebrow">Método</span>
+      <h2>Cinco regras de trabalho</h2>
+      <p class="lede">O que o cliente pode conferir em cada etapa do caso, da primeira reunião ao último recurso.</p>
+    </div>
+    <div class="rules reveal">
+      <details name="regra" open>
+        <summary><span class="n">01</span><span class="t">Os autos antes de qualquer palavra</span>{{x}}</summary>
+        <div class="body">
+          <p>Nenhum depoimento é prestado e nenhuma petição é apresentada antes da leitura integral do inquérito ou do processo. Dessa leitura saem a linha do tempo dos fatos e o mapa do que a acusação tem e do que ela não tem.</p>
+          <span class="ref">Lei 8.906/1994, art. 7º, XIV · Súmula Vinculante 14</span>
+        </div>
+      </details>
+      <details name="regra">
+        <summary><span class="n">02</span><span class="t">A defesa começa na investigação</span>{{x}}</summary>
+        <div class="body">
+          <p>O trabalho começa na intimação, na busca e apreensão ou na prisão, e não na denúncia. Depoimentos, quesitos, pedidos de restituição e medidas contra a prisão são tratados como partes de uma só estratégia.</p>
+          <span class="ref">Lei 8.906/1994, art. 7º, XXI</span>
+        </div>
+      </details>
+      <details name="regra">
+        <summary><span class="n">03</span><span class="t">Petições escritas para quem decide</span>{{x}}</summary>
+        <div class="body">
+          <p>Cada peça abre com uma síntese: o que se pede, com base em que norma e por quê. Cada afirmação de fato indica o evento e o documento dos autos em que se apoia.</p>
+        </div>
+      </details>
+      <details name="regra">
+        <summary><span class="n">04</span><span class="t">Citações conferidas na fonte</span>{{x}}</summary>
+        <div class="body">
+          <p>Lei, súmula e precedente só entram na peça depois de conferidos no texto oficial. O que não pode ser verificado não é citado.</p>
+        </div>
+      </details>
+      <details name="regra">
+        <summary><span class="n">05</span><span class="t">O recurso preparado desde o início</span>{{x}}</summary>
+        <div class="body">
+          <p>As questões de lei federal e de Constituição são levantadas desde a primeira manifestação, para que possam ser levadas ao Superior Tribunal de Justiça e ao Supremo Tribunal Federal.</p>
+          <span class="ref">CF, arts. 102, III, e 105, III</span>
+        </div>
+      </details>
     </div>
   </div>
 </section>
 
-<section class="section tinted">
+<section class="section section--alt">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="label">Como o trabalho é feito</span>
-      <h2 class="title">Método de atuação</h2>
+    <div class="head head--row reveal">
+      <div>
+        <span class="eyebrow">Perguntas frequentes</span>
+        <h2>Respostas diretas</h2>
+      </div>
+      <a class="more" href="{{root}}perguntas-frequentes/">Todas as perguntas</a>
     </div>
-    <div class="steps">
-      <div class="step reveal">
-        <h3>Leitura integral dos autos</h3>
-        <p>Nenhuma manifestação é apresentada antes do exame completo do inquérito ou do processo. O acesso do advogado aos autos da investigação é direito previsto na Lei 8.906/1994, art. 7º, XIV.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Atuação desde a investigação</h3>
-        <p>A defesa acompanha o cliente a partir da intimação, da busca e apreensão ou da prisão, e não apenas depois da denúncia. Depoimentos, pedidos de restituição de bens e medidas cautelares são tratados como parte da mesma estratégia.</p>
-      </div>
-      <div class="step reveal">
-        <h3>Atendimento direto e sigilo</h3>
-        <p>O atendimento é feito diretamente pela advogada. As informações do cliente são protegidas pelo dever de sigilo profissional previsto no Código de Ética e Disciplina da OAB.</p>
-      </div>
+    <div class="reveal">
+      {{faq_destaque}}
     </div>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="label">Perguntas frequentes</span>
-      <h2 class="title">Respostas diretas</h2>
-    </div>
-    <div class="reveal">
-      {{faq_destaque}}
-    </div>
-    <p style="margin-top:2.2rem" class="reveal"><a class="link-quiet" href="{{root}}perguntas-frequentes/">Todas as perguntas</a></p>
-  </div>
-</section>
-
-<section class="section tinted">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="label">Artigos</span>
-      <h2 class="title">Publicações recentes</h2>
+    <div class="head head--row reveal">
+      <div>
+        <span class="eyebrow">Artigos</span>
+        <h2>Publicações recentes</h2>
+      </div>
+      <a class="more" href="{{root}}artigos/">Todos os artigos</a>
     </div>
     <div class="posts">
       {{artigos_recentes}}
     </div>
-    <p style="margin-top:2.2rem" class="reveal"><a class="link-quiet" href="{{root}}artigos/">Todos os artigos</a></p>
   </div>
 </section>
 
-{{contato}}
+{{contato_alt}}

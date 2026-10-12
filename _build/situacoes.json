@@ -1,0 +1,116 @@
+[
+  {
+    "key": "intimacao",
+    "aba": "Recebi uma intimação da Polícia Federal",
+    "titulo": "Intimação para depor",
+    "texto": "A intimação nem sempre informa se a pessoa será ouvida como testemunha ou como investigada, e os direitos são diferentes em cada caso. Antes do comparecimento, o advogado pode examinar o inquérito.",
+    "colunas": [
+      {
+        "titulo": "Primeiros passos",
+        "ordenada": true,
+        "itens": [
+          "Guarde a intimação e não preste esclarecimentos informais por telefone ou mensagem.",
+          "Procure um advogado antes da data marcada: ele pode examinar os autos e acompanhar o depoimento.",
+          "Com os autos em mãos, decide-se entre prestar esclarecimentos, pedir nova data ou exercer o direito ao silêncio."
+        ]
+      }
+    ],
+    "ref": "Lei 8.906/1994, art. 7º, XIV e XXI · CPP, art. 186 · Súmula Vinculante 14",
+    "link": { "href": "artigos/fui-intimado-pela-policia-federal-o-que-fazer/", "rotulo": "Ler o artigo completo" }
+  },
+  {
+    "key": "busca",
+    "aba": "Houve busca e apreensão",
+    "titulo": "Busca e apreensão",
+    "texto": "A busca domiciliar depende de mandado judicial, que deve ser mostrado e lido ao morador antes da entrada. A diligência autoriza procurar e apreender objetos, não interrogar quem está no local.",
+    "colunas": [
+      {
+        "titulo": "Primeiros passos",
+        "ordenada": true,
+        "itens": [
+          "Leia o mandado e confira o endereço, o nome e o que pode ser apreendido.",
+          "Acompanhe a diligência, não resista e não esconda nem destrua nada.",
+          "Leia o auto antes de assinar e peça cópia. Depois, o advogado obtém a decisão que autorizou a medida e avalia o pedido de restituição dos bens."
+        ]
+      }
+    ],
+    "ref": "CF, art. 5º, XI · CPP, arts. 118, 120, 243 e 245",
+    "link": { "href": "artigos/busca-e-apreensao-da-policia-federal-quais-sao-os-meus-direitos/", "rotulo": "Ler o artigo completo" }
+  },
+  {
+    "key": "prisao",
+    "aba": "Alguém foi preso",
+    "titulo": "Prisão em flagrante",
+    "texto": "A prisão e o local onde a pessoa está devem ser comunicados imediatamente ao juiz, ao Ministério Público e à família ou a quem o preso indicar. A audiência de custódia deve ocorrer em até 24 horas: nela o juiz relaxa a prisão ilegal, converte o flagrante em prisão preventiva ou concede liberdade provisória.",
+    "colunas": [
+      {
+        "titulo": "Primeiros passos",
+        "ordenada": true,
+        "itens": [
+          "Descubra em que unidade a pessoa está e qual autoridade fez a prisão.",
+          "O preso tem direito de permanecer calado e de ser assistido por advogado. O recomendável é que não preste declarações antes dessa conversa.",
+          "Reúna comprovantes de residência e de trabalho, que costumam ser relevantes na audiência de custódia."
+        ]
+      }
+    ],
+    "ref": "CF, art. 5º, LXII e LXIII · CPP, arts. 306 e 310",
+    "link": { "href": "crimes-federais/#fases", "rotulo": "Ver a atuação em cada fase" }
+  },
+  {
+    "key": "bloqueio",
+    "aba": "Bens ou contas foram bloqueados",
+    "titulo": "Bloqueio de bens e valores",
+    "texto": "O juiz pode decretar medidas assecuratórias sobre bens, direitos e valores do investigado. Na Lei de Lavagem de Dinheiro, a liberação total ou parcial é determinada quando comprovada a licitude da origem, mantido o bloqueio do que for necessário à reparação dos danos e ao pagamento de multas e custas.",
+    "colunas": [
+      {
+        "titulo": "Primeiros passos",
+        "ordenada": true,
+        "itens": [
+          "Obtenha a decisão que determinou o bloqueio, para conhecer o fundamento e o alcance da medida.",
+          "Reúna a documentação da origem dos bens e valores: declarações de imposto de renda, contratos e extratos.",
+          "O pedido de liberação é dirigido ao juiz do caso. Na Lei de Lavagem, ele só é conhecido com o comparecimento pessoal do acusado."
+        ]
+      }
+    ],
+    "ref": "CPP, arts. 125 e 126 · Lei 9.613/1998, art. 4º, §§ 2º e 3º",
+    "link": { "href": "crimes-federais/#fases", "rotulo": "Ver a atuação em cada fase" }
+  },
+  {
+    "key": "citacao",
+    "aba": "Recebi uma citação",
+    "titulo": "Denúncia recebida e citação",
+    "texto": "Recebida a denúncia, o acusado é citado para responder à acusação por escrito, no prazo de 10 dias. É a primeira manifestação da defesa no processo e o momento de arguir preliminares, juntar documentos, especificar provas e arrolar testemunhas.",
+    "colunas": [
+      {
+        "titulo": "Primeiros passos",
+        "ordenada": true,
+        "itens": [
+          "Anote a data em que recebeu a citação: é dela que, em regra, corre o prazo de 10 dias.",
+          "Entregue ao advogado a denúncia e todos os documentos que tiver sobre os fatos.",
+          "A resposta pode levar à absolvição sumária, por exemplo quando o fato narrado evidentemente não constitui crime."
+        ]
+      }
+    ],
+    "ref": "CPP, arts. 396, 396-A e 397",
+    "link": { "href": "crimes-federais/#fases", "rotulo": "Ver a atuação em cada fase" }
+  },
+  {
+    "key": "medico",
+    "aba": "Sou médico e fui notificado",
+    "titulo": "Médico notificado ou intimado",
+    "texto": "O mesmo atendimento pode gerar um inquérito policial, uma sindicância no Conselho Regional de Medicina e uma ação de indenização. São esferas independentes, e o que é dito em uma pode ser levado às outras.",
+    "colunas": [
+      {
+        "titulo": "Primeiros passos",
+        "ordenada": true,
+        "itens": [
+          "Não altere o prontuário e reúna a documentação completa do atendimento.",
+          "Não preste esclarecimentos à polícia, ao hospital, à operadora ou ao Conselho sem orientação.",
+          "Defina uma só estratégia para as três esferas antes da primeira manifestação."
+        ]
+      }
+    ],
+    "ref": "CP, arts. 18, II, 121, § 3º, e 129, § 6º · Resolução CFM nº 2.306/2022",
+    "link": { "href": "defesa-criminal-de-medicos/", "rotulo": "Ver a área de defesa de médicos" }
+  }
+]

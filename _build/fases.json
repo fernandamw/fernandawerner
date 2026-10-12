@@ -1,0 +1,86 @@
+[
+  {
+    "key": "investigacao",
+    "aba": "Investigação",
+    "titulo": "Investigação",
+    "texto": "Inquérito da Polícia Federal ou procedimento investigatório do Ministério Público Federal. É a fase em que se colhem depoimentos, documentos e perícias, muitas vezes sem que o investigado saiba.",
+    "colunas": [
+      { "titulo": "O que a defesa faz", "itens": [
+        "Examina os autos da investigação e copia as peças.",
+        "Acompanha os depoimentos e apresenta razões e quesitos.",
+        "Avalia o cabimento de acordo de não persecução penal."
+      ] }
+    ],
+    "ref": "Lei 8.906/1994, art. 7º, XIV e XXI · Súmula Vinculante 14 · CPP, art. 28-A"
+  },
+  {
+    "key": "cautelares",
+    "aba": "Medidas cautelares",
+    "titulo": "Medidas cautelares",
+    "texto": "Busca e apreensão, prisão preventiva, medidas diversas da prisão, como monitoração eletrônica e proibição de contato com pessoa determinada, e bloqueio de bens.",
+    "colunas": [
+      { "titulo": "O que a defesa faz", "itens": [
+        "Atua na audiência de custódia.",
+        "Impetra <em>Habeas Corpus</em> e pede a revogação da prisão ou a substituição por medida menos gravosa.",
+        "Pede a restituição de coisas apreendidas e a liberação de bens de origem lícita."
+      ] }
+    ],
+    "ref": "CPP, arts. 118 a 120, 240 a 250, 310, 312 e 319 · Lei 9.613/1998, art. 4º"
+  },
+  {
+    "key": "denuncia",
+    "aba": "Denúncia e resposta",
+    "titulo": "Denúncia e resposta à acusação",
+    "texto": "O Ministério Público Federal oferece a denúncia. Se o juiz a recebe, o acusado é citado para responder à acusação por escrito, no prazo de 10 dias.",
+    "colunas": [
+      { "titulo": "O que a defesa faz", "itens": [
+        "Argui preliminares e nulidades.",
+        "Junta documentos, especifica provas e arrola testemunhas.",
+        "Pede a absolvição sumária, quando cabível."
+      ] }
+    ],
+    "ref": "CPP, arts. 396, 396-A e 397"
+  },
+  {
+    "key": "instrucao",
+    "aba": "Instrução e sentença",
+    "titulo": "Instrução e sentença",
+    "texto": "Na audiência são ouvidos o ofendido, as testemunhas de acusação e de defesa e os peritos. O interrogatório do acusado vem depois. Seguem-se as alegações finais e a sentença.",
+    "colunas": [
+      { "titulo": "O que a defesa faz", "itens": [
+        "Inquire testemunhas e peritos.",
+        "Prepara o acusado para o interrogatório.",
+        "Apresenta alegações finais, orais ou por memoriais."
+      ] }
+    ],
+    "ref": "CPP, arts. 400 e 403"
+  },
+  {
+    "key": "recursos",
+    "aba": "Recursos",
+    "titulo": "Recursos",
+    "texto": "Da sentença cabe apelação, em 5 dias, ao Tribunal Regional Federal. Das decisões do tribunal cabem recurso especial ao Superior Tribunal de Justiça, quando contrariada lei federal, e recurso extraordinário ao Supremo Tribunal Federal, quando contrariada a Constituição.",
+    "colunas": [
+      { "titulo": "O que a defesa faz", "itens": [
+        "Interpõe a apelação e apresenta as razões ao tribunal.",
+        "Interpõe recurso especial e recurso extraordinário.",
+        "Impetra <em>Habeas Corpus</em> nos Tribunais Superiores, quando cabível."
+      ] }
+    ],
+    "ref": "CPP, art. 593 · CF, arts. 102, III, e 105, III"
+  },
+  {
+    "key": "execucao",
+    "aba": "Execução",
+    "titulo": "Execução penal",
+    "texto": "Com a condenação definitiva, a pena é executada sob a supervisão do juiz da execução. A pena privativa de liberdade é cumprida de forma progressiva, com transferência para regime menos rigoroso conforme o tempo cumprido e o mérito do condenado.",
+    "colunas": [
+      { "titulo": "O que a defesa faz", "itens": [
+        "Confere o cálculo da pena.",
+        "Pede a progressão de regime e os demais direitos previstos na Lei de Execução Penal.",
+        "Acompanha os incidentes da execução até a extinção da pena."
+      ] }
+    ],
+    "ref": "Lei 7.210/1984 (Lei de Execução Penal), art. 112"
+  }
+]

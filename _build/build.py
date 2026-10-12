@@ -9,6 +9,8 @@ Onde editar:
     _build/paginas/*.html   páginas fixas (início, áreas, sobre, perguntas, artigos, 404)
     _build/artigos/*.html   um arquivo por artigo
     _build/faq.json         perguntas frequentes (alimenta a página e os dados estruturados)
+    _build/situacoes.json   painel "O que aconteceu?" da página inicial
+    _build/fases.json       fases do processo na página de crimes federais
 
 Nunca edite os .html da raiz diretamente: eles são sobrescritos a cada geração.
 """
@@ -17,6 +19,7 @@ import html
 import json
 import re
 import shutil
+import unicodedata
 from pathlib import Path
 
 BUILD = Path(__file__).resolve().parent
@@ -24,7 +27,7 @@ REPO = BUILD.parent
 
 SITE = "https://fernandawerner.adv.br"
 NOME = "Fernanda Werner"
-ESCRITORIO = "Fernanda Werner — Advocacia Criminal"
+ESCRITORIO = "Fernanda Werner — Advocacia Criminal Federal"
 OAB = "OAB/SC 69.022"
 FONE_EXIBE = "(47) 3170-2300"
 FONE_E164 = "+554731702300"
@@ -80,9 +83,9 @@ def pessoa():
         "@type": "Person",
         "@id": f"{SITE}/#fernanda-werner",
         "name": NOME,
-        "jobTitle": "Advogada criminalista",
-        "description": ("Advogada criminalista inscrita na OAB/SC sob o nº 69.022, com escritório em "
-                        "Balneário Camboriú/SC. Atua em crimes de competência federal e na defesa criminal de médicos."),
+        "jobTitle": "Advogada Criminalista",
+        "description": ("Advogada Criminalista inscrita na OAB/SC sob o nº 69.022, com escritório em "
+                        "Balneário Camboriú/SC. Atua na defesa em crimes de competência federal."),
         "url": f"{SITE}/sobre/",
         "image": f"{SITE}/assets/fernanda-werner.jpg",
         "email": EMAIL,
@@ -118,9 +121,8 @@ def escritorio():
         "url": f"{SITE}/",
         "image": f"{SITE}/assets/fernanda-werner.jpg",
         "logo": f"{SITE}/favicon-512.png",
-        "description": ("Escritório de advocacia criminal em Balneário Camboriú/SC. Atuação em crimes de "
-                        "competência federal e na defesa criminal de médicos, na Justiça Federal, na Justiça "
-                        "Estadual e nos tribunais superiores."),
+        "description": ("Escritório de advocacia criminal em Balneário Camboriú/SC. Defesa em crimes de "
+                        "competência federal, na Justiça Federal e nos Tribunais Superiores."),
         "telephone": FONE_E164,
         "email": EMAIL,
         "address": {"@type": "PostalAddress", "addressLocality": "Balneário Camboriú",
@@ -130,7 +132,7 @@ def escritorio():
                        {"@type": "City", "name": "Balneário Camboriú"}],
         "founder": {"@id": f"{SITE}/#fernanda-werner"},
         "employee": {"@id": f"{SITE}/#fernanda-werner"},
-        "knowsAbout": ["Advocacia criminal", "Crimes federais", "Defesa criminal de médicos"],
+        "knowsAbout": ["Advocacia criminal", "Crimes federais", "Operações da Polícia Federal", "Defesa criminal de médicos"],
         "sameAs": [INSTAGRAM],
         "contactPoint": {"@type": "ContactPoint", "contactType": "Atendimento", "telephone": FONE_E164,
                          "email": EMAIL, "availableLanguage": "Portuguese", "areaServed": "BR"},
@@ -157,6 +159,15 @@ def jsonld(nos):
 
 # ---------------------------------------------------------------- blocos reutilizados
 
+X = '<span class="x" aria-hidden="true"></span>'
+
+
+def slug(s):
+    s = unicodedata.normalize("NFD", sem_tags(s).lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return re.sub(r"[^a-z0-9]+", "-", s).strip("-")
+
+
 def cartao_artigo(a):
     return (f'<a class="post reveal" href="{{{{root}}}}artigos/{a["slug"]}/">'
             f'<span class="cat">{CATEGORIAS[a["categoria"]]}</span>'
@@ -167,28 +178,57 @@ def cartao_artigo(a):
 def bloco_faq(itens):
     out = ['<div class="faq">']
     for it in itens:
-        out.append(f'<details><summary>{it["q"]}</summary><div class="answer">{it["a"]}</div></details>')
+        out.append(f'<details><summary><span>{it["q"]}</span>{X}</summary>'
+                   f'<div class="answer">{it["a"]}</div></details>')
     out.append("</div>")
     return "\n".join(out)
 
 
-def bloco_contato(tinted=False):
-    cls = "section tinted" if tinted else "section"
+def bloco_abas(itens, prefixo, rotulo, em_linha=False):
+    """Abas acessíveis. Sem JavaScript, todos os painéis ficam visíveis em sequência."""
+    cls = "tabs tabs--line" if em_linha else "tabs"
+    botoes, paineis = [], []
+    for i, it in enumerate(itens):
+        tid, pid = f"{prefixo}-aba-{it['key']}", f"{prefixo}-{it['key']}"
+        num = f'<span class="n">{i + 1:02d}</span>' if em_linha else ""
+        botoes.append(f'<button class="tab" role="tab" id="{tid}" aria-controls="{pid}" '
+                      f'aria-selected="{"true" if i == 0 else "false"}"><span>{num}{it["aba"]}</span></button>')
+        colunas = ""
+        if it.get("colunas"):
+            partes = []
+            for col in it["colunas"]:
+                tag = "ol" if col.get("ordenada") else "ul"
+                lis = "".join(f"<li>{x}</li>" for x in col["itens"])
+                partes.append(f'<div><h4>{col["titulo"]}</h4><{tag}>{lis}</{tag}></div>')
+            colunas = f'<div class="cols">{"".join(partes)}</div>'
+        link = ""
+        if it.get("link"):
+            link = f'<a class="more" href="{{{{root}}}}{it["link"]["href"]}">{it["link"]["rotulo"]}</a>'
+        paineis.append(
+            f'<section class="panel" role="tabpanel" id="{pid}" aria-labelledby="{tid}" tabindex="0">'
+            f'<h3>{it["titulo"]}</h3><p>{it["texto"]}</p>{colunas}'
+            f'<div class="foot"><span class="ref">{it["ref"]}</span>{link}</div></section>')
+    return (f'<div class="{cls}" data-tabs><div class="tablist" role="tablist" aria-label="{rotulo}">'
+            f'{"".join(botoes)}</div><div class="panels">{"".join(paineis)}</div></div>')
+
+
+def bloco_contato(alt=False):
+    cls = "section cta section--alt" if alt else "section cta"
     return f'''
 <section class="{cls}" id="contato">
-  <div class="wrap contact">
-    <div class="text reveal">
-      <span class="label">Contato</span>
-      <h2 class="title">Atendimento presencial em {CIDADE} e por videoconferência em todo o país</h2>
-      <p>O primeiro contato é feito pelo WhatsApp ou por e-mail. As informações recebidas são tratadas sob sigilo profissional, mesmo que não haja contratação.</p>
-      <a class="btn" href="{WA}" target="_blank" rel="noopener">Contato pelo WhatsApp {ARROW}</a>
+  <div class="wrap grid">
+    <div class="reveal">
+      <span class="eyebrow">Contato</span>
+      <h2>Fale com o escritório</h2>
+      <p>Atendimento presencial em {CIDADE} e por videoconferência em todo o país. As informações recebidas são tratadas sob sigilo profissional, mesmo que não haja contratação.</p>
+      <a class="btn" href="{WA}" target="_blank" rel="noopener">WhatsApp {ARROW}</a>
     </div>
-    <div class="contact-card reveal">
+    <div class="reveal">
       <dl>
         <div><dt>WhatsApp</dt><dd><a href="{WA}" target="_blank" rel="noopener">{FONE_EXIBE}</a></dd></div>
         <div><dt>E-mail</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div>
         <div><dt>Instagram</dt><dd><a href="{INSTAGRAM}" target="_blank" rel="noopener">@fernandawerner.adv</a></dd></div>
-        <div><dt>Localização</dt><dd>{CIDADE}</dd></div>
+        <div><dt>Escritório</dt><dd>{CIDADE}</dd></div>
       </dl>
       <p class="privacy">Comunicações relativas ao exercício da advocacia são invioláveis (Lei 8.906/1994, art. 7º, II) e protegidas pelo dever de sigilo profissional (Código de Ética e Disciplina da OAB, arts. 35 a 38).</p>
     </div>
@@ -197,6 +237,10 @@ def bloco_contato(tinted=False):
 
 
 # ---------------------------------------------------------------- moldura da página
+
+FONTES = ("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700"
+          "&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400..700;1,400..700&display=swap")
+
 
 def moldura(meta, corpo, nos_schema, previa):
     caminho = meta["path"]
@@ -207,24 +251,23 @@ def moldura(meta, corpo, nos_schema, previa):
     og_type = meta.get("og_type", "website")
     solid = "" if meta.get("hero") else " solid"
 
-    links = "".join(
-        f'<li><a href="{{{{root}}}}{p}"{" aria-current=\"page\"" if p.strip("/") == ativo else ""}>{n}</a></li>'
-        for p, n in NAV)
-    painel = "".join(
-        f'<a href="{{{{root}}}}{p}"{" aria-current=\"page\"" if p.strip("/") == ativo else ""}>{n}</a>'
-        for p, n in [("", "Início")] + NAV)
+    def atual(p):
+        return ' aria-current="page"' if p.strip("/") == ativo else ""
+
+    links = "".join(f'<li><a href="{{{{root}}}}{p}"{atual(p)}>{n}</a></li>' for p, n in NAV)
+    painel = "".join(f'<a class="item" href="{{{{root}}}}{p}"{atual(p)}>{n}</a>' for p, n in [("", "Início")] + NAV)
     rodape = "".join(f'<li><a href="{{{{root}}}}{p}">{n}</a></li>' for p, n in [("", "Início")] + NAV)
 
     robots = '<meta name="robots" content="noindex">' if meta.get("noindex") or previa else \
         '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">'
-    aviso = ('<div class="preview-flag">Prévia para revisão · ainda não publicada</div>'
-             if previa else "")
+    aviso = '<div class="preview-flag">Prévia · não publicada</div>' if previa else ""
+    progresso = '<div class="progress" aria-hidden="true"><i></i></div>' if meta.get("progresso") else ""
 
     return f'''<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>{html.escape(titulo)}</title>
 <meta name="description" content="{html.escape(desc)}">
 <meta name="author" content="{NOME}">
@@ -247,23 +290,24 @@ def moldura(meta, corpo, nos_schema, previa):
 <link rel="apple-touch-icon" sizes="180x180" href="{{{{root}}}}apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="{FONTES}" rel="stylesheet">
 <link rel="stylesheet" href="{{{{root}}}}assets/site.css">
 <script>document.documentElement.classList.add('js')</script>
 {jsonld(nos_schema)}
 </head>
 <body>
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
-
+{progresso}
 <header class="nav{solid}" id="nav">
-  <a href="{{{{root}}}}" class="nav-brand">Fernanda <span>Werner</span></a>
+  <a href="{{{{root}}}}" class="brand" aria-label="Fernanda Werner, início">Fernanda <em>Werner</em></a>
   <nav aria-label="Principal"><ul class="nav-links">{links}</ul></nav>
-  <a href="{WA}" target="_blank" rel="noopener" class="nav-cta">Contato</a>
+  <a href="{WA}" target="_blank" rel="noopener" class="btn nav-cta">Contato</a>
   <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-panel"><span></span><span></span><span></span></button>
 </header>
 <div class="menu-panel" id="menu-panel">
   {painel}
-  <a class="menu-contact" href="{WA}" target="_blank" rel="noopener">Contato pelo WhatsApp</a>
+  <a class="btn" href="{WA}" target="_blank" rel="noopener">WhatsApp {ARROW}</a>
+  <span class="ref">{OAB} · {CIDADE}</span>
 </div>
 
 <main id="conteudo">
@@ -271,13 +315,15 @@ def moldura(meta, corpo, nos_schema, previa):
 </main>
 
 <footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">Fernanda Werner<small>Advocacia Criminal · {OAB} · {CIDADE}</small></div>
-    <ul class="footer-nav">{rodape}</ul>
-  </div>
-  <div class="footer-legal">
-    <p>O conteúdo deste site tem caráter informativo e não substitui a análise individual de cada caso por advogado.</p>
-    <p>© 2026 Fernanda Werner. {OAB}.</p>
+  <div class="wrap">
+    <div class="top">
+      <div><span class="brand">Fernanda <em>Werner</em></span><span class="ref">Advocacia Criminal Federal · {OAB} · {CIDADE}</span></div>
+      <ul class="footer-nav">{rodape}</ul>
+    </div>
+    <div class="legal">
+      <p>O conteúdo deste site tem caráter informativo e não substitui a análise individual de cada caso por advogado.</p>
+      <p>© 2026 Fernanda Werner. {OAB}.</p>
+    </div>
   </div>
 </footer>
 
@@ -293,18 +339,33 @@ def resolver_links(pagina, caminho, previa):
     """Troca {{root}} pelo prefixo certo. Na prévia, usa links relativos com index.html."""
     if not previa:
         return pagina.replace("{{root}}", "/")
-    profundidade = caminho.count("/") if caminho.endswith("/") else caminho.count("/")
-    prefixo = "../" * profundidade
+    prefixo = "../" * caminho.count("/")
     pagina = pagina.replace("{{root}}", prefixo)
 
     def fix(m):
         url = m.group(2)
         if re.match(r"^(https?:|mailto:|#|tel:)", url):
             return m.group(0)
-        if url == "" or url.endswith("/"):
-            return f'{m.group(1)}{url}index.html"'
+        base, _, ancora = url.partition("#")
+        if base == "" or base.endswith("/"):
+            return f'{m.group(1)}{base}index.html{"#" + ancora if ancora else ""}"'
         return m.group(0)
     return re.sub(r'(href=")([^"]*)"', fix, pagina)
+
+
+def sumario(corpo):
+    """Dá id a cada <h2> do artigo e devolve (corpo, itens do sumário)."""
+    itens, usados = [], set()
+
+    def troca(m):
+        texto = m.group(1)
+        s = slug(texto)
+        while s in usados:
+            s += "-2"
+        usados.add(s)
+        itens.append((s, sem_tags(texto)))
+        return f'<h2 id="{s}">{texto}</h2>'
+    return re.sub(r"<h2>(.*?)</h2>", troca, corpo, flags=re.S), itens
 
 
 # ---------------------------------------------------------------- geração
@@ -318,21 +379,38 @@ def gerar(saida, previa):
     artigos.sort(key=lambda a: (a["data"], -a.get("ordem", 0)), reverse=True)
     faq = json.loads((BUILD / "faq.json").read_text(encoding="utf-8"))
     todas = [it for g in faq for it in g["itens"]]
+    situacoes = json.loads((BUILD / "situacoes.json").read_text(encoding="utf-8"))
+    fases = json.loads((BUILD / "fases.json").read_text(encoding="utf-8"))
+
+    def faq_completo():
+        chips = ['<button class="chip" type="button" data-grupo="todas" aria-pressed="true">Todas</button>']
+        grupos = []
+        for g in faq:
+            gid = slug(g["grupo"])
+            chips.append(f'<button class="chip" type="button" data-grupo="{gid}" aria-pressed="false">{g["grupo"]}</button>')
+            grupos.append(f'<div class="faq-group" data-grupo="{gid}"><h2>{g["grupo"]}</h2>{bloco_faq(g["itens"])}</div>')
+        lupa = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
+                '<circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>')
+        return (f'<div class="faq-tools"><div class="faq-search">{lupa}'
+                f'<input type="search" id="faq-busca" placeholder="Buscar nas perguntas (ex.: silêncio, busca, CRM)" '
+                f'aria-label="Buscar nas perguntas" autocomplete="off"></div>'
+                f'<div class="chips" role="group" aria-label="Filtrar por assunto">{"".join(chips)}</div></div>'
+                + "\n".join(grupos)
+                + '<p class="faq-empty" id="faq-vazio" hidden>Nenhuma pergunta encontrada. Tente outra palavra.</p>')
 
     def substituir(corpo):
-        corpo = corpo.replace("{{wa}}", WA).replace("{{arrow}}", ARROW)
+        corpo = corpo.replace("{{wa}}", WA).replace("{{arrow}}", ARROW).replace("{{x}}", X)
+        corpo = corpo.replace("{{contato_alt}}", bloco_contato(True))
         corpo = corpo.replace("{{contato}}", bloco_contato())
-        corpo = corpo.replace("{{contato_tinted}}", bloco_contato(True))
+        corpo = corpo.replace("{{situacoes}}", bloco_abas(situacoes, "situacao", "Situações"))
+        corpo = corpo.replace("{{fases}}", bloco_abas(fases, "fase", "Fases do processo", em_linha=True))
         corpo = corpo.replace("{{artigos_recentes}}", "\n".join(cartao_artigo(a) for a in artigos[:3]))
         corpo = corpo.replace("{{artigos_todos}}", "\n".join(cartao_artigo(a) for a in artigos))
         for cat in CATEGORIAS:
             corpo = corpo.replace("{{artigos:%s}}" % cat,
                                   "\n".join(cartao_artigo(a) for a in artigos if a["categoria"] == cat))
         corpo = corpo.replace("{{faq_destaque}}", bloco_faq([it for it in todas if it.get("destaque")]))
-        grupos = []
-        for g in faq:
-            grupos.append(f'<div class="faq-group reveal"><h2>{g["grupo"]}</h2>{bloco_faq(g["itens"])}</div>')
-        corpo = corpo.replace("{{faq_completo}}", "\n".join(grupos))
+        corpo = corpo.replace("{{faq_completo}}", faq_completo())
         return corpo
 
     paginas = []  # (caminho, html)
@@ -362,7 +440,7 @@ def gerar(saida, previa):
             nos.append(migalhas([("", "Início"), (caminho, meta.get("crumb", meta["title"]))]))
         paginas.append((caminho, moldura(meta, substituir(corpo), nos, previa)))
         if caminho != "404.html":
-            urls.append((caminho, meta.get("atualizado", "2026-10-10")))
+            urls.append((caminho, meta.get("atualizado", "2026-10-12")))
 
     # artigos
     for a in artigos:
@@ -371,44 +449,53 @@ def gerar(saida, previa):
         base = "".join(f"<li>{b}</li>" for b in a.get("base_legal", []))
         outros = [o for o in artigos if o["slug"] != a["slug"]]
         outros.sort(key=lambda o: o["categoria"] != a["categoria"])
+        texto, itens = sumario(a["corpo"])
+        minutos = max(2, round(len(sem_tags(a["resumo"] + texto).split()) / 200))
+        toc = "".join(f'<li><a href="#{s}">{t}</a></li>' for s, t in itens)
         corpo = f'''
-<section class="page-hero article-hero">
+<section class="page-hero page-hero--article">
   <div class="wrap">
     <ol class="crumbs"><li><a href="{{{{root}}}}">Início</a></li><li><a href="{{{{root}}}}artigos/">Artigos</a></li><li><a href="{{{{root}}}}{a["categoria"]}/">{cat_nome}</a></li></ol>
     <h1>{a["titulo"]}</h1>
-    <p class="meta-line">Por <a href="{{{{root}}}}sobre/" style="color:inherit">Fernanda Werner</a>, advogada criminalista ({OAB}) · Publicado em <time datetime="{a["data"]}">{data_extenso(a["data"])}</time></p>
+    <p class="byline"><span>Por <a href="{{{{root}}}}sobre/">Fernanda Werner</a>, Advogada Criminalista, {OAB}</span><span><time datetime="{a["data"]}">{data_extenso(a["data"])}</time></span><span>Leitura de {minutos} min</span></p>
   </div>
 </section>
-<article class="article-body">
-  <div class="answer-box">
-    <span class="label">Resposta em resumo</span>
-    {a["resumo"]}
-  </div>
-  <div class="prose">
-{a["corpo"]}
-  </div>
-  <div class="legal-base">
-    <h2>Base legal citada</h2>
-    <ul>{base}</ul>
-  </div>
-  <div class="author">
-    <img src="{{{{root}}}}assets/fernanda-werner-retrato.jpg" alt="Fernanda Werner" width="84" height="84" loading="lazy">
-    <div>
-      <div class="name">Fernanda Werner</div>
-      <p>Advogada criminalista, {OAB}, com escritório em {CIDADE}. Atua em crimes de competência federal e na defesa criminal de médicos. <a href="{{{{root}}}}sobre/">Perfil completo</a></p>
+<div class="wrap article">
+  <details class="toc" open>
+    <summary>Neste artigo</summary>
+    <ol>{toc}</ol>
+  </details>
+  <article class="col">
+    <div class="answer-box">
+      <span class="eyebrow">Resposta em resumo</span>
+      {a["resumo"]}
     </div>
-  </div>
-  <p class="disclaimer">Texto informativo, baseado na legislação vigente na data de publicação. Não substitui a análise do caso concreto por advogado.</p>
-</article>
-<section class="section tinted">
+    <div class="prose">
+{texto}
+    </div>
+    <div class="legal-base">
+      <h2>Base legal citada</h2>
+      <ul>{base}</ul>
+    </div>
+    <div class="author">
+      <img src="{{{{root}}}}assets/fernanda-werner-retrato.jpg" alt="Fernanda Werner" width="80" height="80" loading="lazy">
+      <div>
+        <div class="name">Fernanda Werner</div>
+        <p>Advogada Criminalista, {OAB}, com escritório em {CIDADE}. Atua em crimes de competência federal. <a href="{{{{root}}}}sobre/">Perfil completo</a></p>
+      </div>
+    </div>
+    <p class="disclaimer">Texto informativo, baseado na legislação vigente na data de publicação. Não substitui a análise do caso concreto por advogado.</p>
+  </article>
+</div>
+<section class="section section--alt">
   <div class="wrap">
-    <div class="section-head"><span class="label">Continue lendo</span><h2 class="title">Outros artigos</h2></div>
+    <div class="head"><span class="eyebrow">Continue lendo</span><h2>Outros artigos</h2></div>
     <div class="posts">{"".join(cartao_artigo(o) for o in outros[:3])}</div>
   </div>
 </section>
 {bloco_contato()}'''
         meta = {"path": caminho, "title": f'{a["titulo"]} | {NOME}', "og_title": a["titulo"],
-                "description": a["descricao"], "nav": "artigos", "og_type": "article"}
+                "description": a["descricao"], "nav": "artigos", "og_type": "article", "progresso": True}
         nos = [website(), escritorio(), pessoa(), {
             "@type": "Article", "@id": f"{SITE}/{caminho}#artigo", "headline": a["titulo"],
             "description": a["descricao"], "abstract": sem_tags(a["resumo"]),
@@ -447,18 +534,19 @@ def gerar(saida, previa):
     (saida / "robots.txt").write_text("\n".join(rb), encoding="utf-8")
 
     ll = [f"# {ESCRITORIO}", "",
-          "> Fernanda Werner é advogada criminalista, inscrita na OAB/SC sob o nº 69.022, com escritório em "
-          "Balneário Camboriú/SC. Atua em duas frentes: crimes de competência federal (investigações da Polícia "
-          "Federal, ações penais na Justiça Federal, recursos ao TRF-4, STJ e STF) e defesa criminal de médicos "
-          "(imputações ligadas ao exercício da medicina e medidas de retaliação contra médicos que relatam "
-          "irregularidades). Atendimento presencial em Balneário Camboriú e por videoconferência em todo o Brasil.",
+          "> Fernanda Werner é Advogada Criminalista, inscrita na OAB/SC sob o nº 69.022, com escritório em "
+          "Balneário Camboriú/SC. Atua na defesa em crimes de competência federal: investigações da Polícia "
+          "Federal, ações penais na Justiça Federal e recursos ao TRF-4, ao STJ e ao STF. Atendimento presencial "
+          "em Balneário Camboriú e por videoconferência em todo o Brasil.",
           "",
           "## Dados profissionais", "",
           f"- Nome profissional: {NOME}",
-          "- Profissão: advogada criminalista",
+          "- Profissão: Advogada Criminalista",
           "- Inscrição: OAB/SC 69.022",
           "- Formação: pós-graduação em Ciências Criminais",
-          "- Áreas: crimes federais; defesa criminal de médicos; recursos aos tribunais superiores; execução penal",
+          "- Área principal: crimes federais (sistema financeiro nacional, lavagem de dinheiro, crimes tributários, "
+          "descaminho e contrabando, crimes contra a Previdência e a Administração Pública federal, tráfico transnacional)",
+          "- Outras áreas: defesa criminal de médicos; recursos aos Tribunais Superiores; execução penal",
           f"- Localização: {CIDADE}, Brasil",
           f"- WhatsApp: {FONE_EXIBE}",
           f"- E-mail: {EMAIL}",
@@ -466,10 +554,10 @@ def gerar(saida, previa):
           f"- Instagram: {INSTAGRAM}",
           "",
           "## Páginas principais", "",
-          f"- [Crimes federais]({SITE}/crimes-federais/): matérias atendidas, fases de atuação e onde os processos tramitam",
+          f"- [Crimes federais]({SITE}/crimes-federais/): matérias, fases do processo e onde os casos tramitam",
           f"- [Defesa criminal de médicos]({SITE}/defesa-criminal-de-medicos/): situações atendidas e relação entre as esferas criminal, ética e cível",
           f"- [Sobre]({SITE}/sobre/): perfil profissional de Fernanda Werner",
-          f"- [Perguntas frequentes]({SITE}/perguntas-frequentes/): respostas diretas sobre atuação, crimes federais e defesa de médicos",
+          f"- [Perguntas frequentes]({SITE}/perguntas-frequentes/): respostas diretas, com a base legal",
           "",
           "## Artigos", ""]
     for a in artigos:
