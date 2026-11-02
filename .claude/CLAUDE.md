@@ -1,6 +1,6 @@
-# fernandawerner.adv.br
+# fernandameira.adv.br (antes fernandawerner.adv.br)
 
-Site estático publicado pelo GitHub Pages a partir da branch `main` (domínio em `CNAME`).
+Site estático publicado pelo GitHub Pages a partir da branch `main` (domínio em `CNAME`). O domínio novo ainda depende do registro; `SITE` em `_build/build.py` e o arquivo `CNAME` devem apontar para o domínio que estiver ativo.
 
 ## Como editar
 
@@ -12,14 +12,14 @@ Site estático publicado pelo GitHub Pages a partir da branch `main` (domínio e
   - `_build/situacoes.json`: painel "O que aconteceu?" da página inicial
   - `_build/fases.json`: fases do processo na página de crimes federais
 - Visual em `assets/site.css` (identidade Obsidian & Wine) e comportamento em `assets/site.js`.
-- Tipografia: Archivo condensada (títulos em maiúsculas e interface), Lora itálica em wine para a palavra de destaque e para citações de lei, IBM Plex Mono para referências legais. Sem cantos arredondados.
+- Tipografia e visual: os do site original (Cormorant Garamond + DM Sans, fundo obsidian, vinho, textura leve, entrada ao rolar). Fernanda gosta desse visual; não redesenhar.
 - Posicionamento: identidade única em crimes federais; defesa criminal de médicos é área interna (fora do título e do primeiro bloco da página inicial).
 - `python3 _build/build.py --previa PASTA` gera cópia navegável com links relativos, para revisão antes de publicar.
 - O build também gera `sitemap.xml`, `robots.txt` e `llms.txt`.
 
 ## Regras de conteúdo
 
-- Nome profissional: sempre "Fernanda Werner". OAB/SC 69.022.
+- Nome profissional visível: sempre "Fernanda Meira" (nov/2026). O nome de cadastro na OAB, "Fernanda Meira Werner", só nos dados estruturados. OAB/SC 69.022.
 - Publicidade da advocacia (Provimento 205/2021 do CFOAB e CED, arts. 39 a 47): texto informativo e sóbrio; sem promessa de resultado, sem casos concretos, sem valores de honorários, sem expressões persuasivas ou de autoengrandecimento, sem chamadas de urgência.
 - Toda citação legal ou de súmula deve ser conferida na fonte oficial antes de entrar. Não citar jurisprudência não verificada.
 - Sem emojis. Evitar "precisão/precisamente", "repousa", "crucial", "vale ressaltar". *Habeas Corpus* em itálico e com iniciais maiúsculas. Cargos com iniciais maiúsculas. Sempre "Advogada Criminalista" e "Tribunais Superiores" com iniciais maiúsculas.
