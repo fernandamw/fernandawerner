@@ -172,7 +172,7 @@ def slug(s):
 
 def cartao_artigo(a):
     return (f'<a class="post reveal" href="{{{{root}}}}artigos/{a["slug"]}/">'
-            f'<span class="cat">{CATEGORIAS[a["categoria"]]}</span>'
+            f'<span class="cat">{a.get("serie") or CATEGORIAS[a["categoria"]]}</span>'
             f'<h3>{a["titulo"]}</h3><p>{a["chamada"]}</p>'
             f'<span class="more">Ler o artigo</span></a>')
 
@@ -503,7 +503,7 @@ def gerar(saida, previa):
             "description": a["descricao"], "abstract": sem_tags(a["resumo"]),
             "url": f"{SITE}/{caminho}", "mainEntityOfPage": f"{SITE}/{caminho}",
             "datePublished": a["data"], "dateModified": a.get("atualizado", a["data"]),
-            "inLanguage": "pt-BR", "articleSection": cat_nome,
+            "inLanguage": "pt-BR", "articleSection": a.get("serie") or cat_nome,
             "image": f"{SITE}/assets/og.jpg",
             "author": {"@id": f"{SITE}/#fernanda-meira"},
             "publisher": {"@id": f"{SITE}/#escritorio"},
