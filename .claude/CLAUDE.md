@@ -13,6 +13,8 @@ Site estático publicado pelo GitHub Pages a partir da branch `main` (domínio e
   - `_build/fases.json`: fases do processo na página de crimes federais
 - Visual em `assets/site.css` (identidade Obsidian & Wine) e comportamento em `assets/site.js`.
 - Tipografia e visual: os do site original (Cormorant Garamond + DM Sans, fundo obsidian, vinho, textura leve, entrada ao rolar). Fernanda gosta desse visual; não redesenhar.
+- Camada de movimento (fim de `assets/site.css` e `assets/site.js`): abertura coreografada na página inicial (classe `intro` no html), profundidade na foto (`data-parallax`), contadores (`data-count`), títulos palavra a palavra, transição entre páginas (view transitions + reserva), botões magnéticos, luz nos cartões, barra de progresso. Tudo respeita `prefers-reduced-motion` e nada esconde texto do HTML (buscadores e IAs leem o mesmo conteúdo).
+- Imagens: `.jpg` com `.webp` ao lado, via `<picture>`; pré-carregamento da foto da página inicial; `speculationrules` para pré-renderizar as páginas internas.
 - Posicionamento: identidade única em crimes federais; defesa criminal de médicos é área interna (fora do título e do primeiro bloco da página inicial).
 - `python3 _build/build.py --previa PASTA` gera cópia navegável com links relativos, para revisão antes de publicar.
 - O build também gera `sitemap.xml`, `robots.txt` e `llms.txt`.

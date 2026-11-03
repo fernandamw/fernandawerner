@@ -263,7 +263,11 @@ def moldura(meta, corpo, nos_schema, previa):
     robots = '<meta name="robots" content="noindex">' if meta.get("noindex") or previa else \
         '<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">'
     aviso = '<div class="preview-flag">Prévia · não publicada</div>' if previa else ""
-    progresso = '<div class="progress" aria-hidden="true"><i></i></div>' if meta.get("progresso") else ""
+    progresso = ""
+    intro = ",'intro'" if meta.get("hero") else ""
+    preload = ('<link rel="preload" as="image" href="{{root}}assets/fernanda-werner.webp" type="image/webp" '
+               'imagesrcset="{{root}}assets/fernanda-werner-800.webp 800w, {{root}}assets/fernanda-werner.webp 1400w" '
+               'imagesizes="(max-width: 1024px) 100vw, 50vw">\n') if meta.get("hero") else ""
 
     return f'''<!DOCTYPE html>
 <html lang="pt-BR">
@@ -293,8 +297,9 @@ def moldura(meta, corpo, nos_schema, previa):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTES}" rel="stylesheet">
-<link rel="stylesheet" href="{{{{root}}}}assets/site.css">
-<script>document.documentElement.classList.add('js')</script>
+{preload}<link rel="stylesheet" href="{{{{root}}}}assets/site.css">
+<script type="speculationrules">{{"prerender":[{{"where":{{"href_matches":"/*"}},"eagerness":"moderate"}}]}}</script>
+<script>document.documentElement.classList.add('js'{intro})</script>
 {jsonld(nos_schema)}
 </head>
 <body>

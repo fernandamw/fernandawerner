@@ -11,7 +11,7 @@
 <section class="hero">
   <div class="hero-text">
     <span class="eyebrow">Advocacia Criminal Federal · Balneário Camboriú/SC</span>
-    <h1>Defesa estratégica<br>em crimes <em>federais</em></h1>
+    <h1><span class="line"><span>Defesa estratégica</span></span><span class="line"><span>em crimes <em>federais</em></span></span></h1>
     <p class="hero-sub"><strong>Vinte e cinco anos dentro da Justiça Federal. Agora, do lado da defesa.</strong> Fernanda Meira, Advogada Criminalista, OAB/SC 69.022. Defesa em investigações da Polícia Federal e em ações penais, do inquérito aos Tribunais Superiores.</p>
     <div class="hero-actions">
       <a href="{{wa}}" target="_blank" rel="noopener" class="btn">Contato sigiloso {{arrow}}</a>
@@ -19,16 +19,19 @@
     </div>
   </div>
   <figure class="hero-photo">
-    <img src="{{root}}assets/fernanda-werner.jpg" srcset="{{root}}assets/fernanda-werner-800.jpg 800w, {{root}}assets/fernanda-werner.jpg 1400w" sizes="(max-width: 1024px) 100vw, 50vw" alt="Fernanda Meira, Advogada Criminalista em Balneário Camboriú/SC" width="1400" height="2100" fetchpriority="high">
+    <picture data-parallax="0.12">
+      <source type="image/webp" srcset="{{root}}assets/fernanda-werner-800.webp 800w, {{root}}assets/fernanda-werner.webp 1400w" sizes="(max-width: 1024px) 100vw, 50vw">
+      <img src="{{root}}assets/fernanda-werner.jpg" srcset="{{root}}assets/fernanda-werner-800.jpg 800w, {{root}}assets/fernanda-werner.jpg 1400w" sizes="(max-width: 1024px) 100vw, 50vw" alt="Fernanda Meira, Advogada Criminalista em Balneário Camboriú/SC" width="1400" height="2100" fetchpriority="high">
+    </picture>
   </figure>
 </section>
 
 <div class="divider"><div></div></div>
 <dl class="credentials">
-  <div class="reveal"><dt>25</dt><dd>Anos na Justiça Federal</dd></div>
+  <div class="reveal"><dt data-count="25">25</dt><dd>Anos na Justiça Federal</dd></div>
   <div class="reveal"><dt>Pós</dt><dd>Pós-graduação em Ciências Criminais</dd></div>
   <div class="reveal"><dt>STJ · STF</dt><dd>Atuação nos Tribunais Superiores</dd></div>
-  <div class="reveal"><dt>SC</dt><dd>OAB/SC 69.022</dd></div>
+  <div class="reveal"><dt data-count="69022" data-format="pt">69.022</dt><dd>OAB/SC</dd></div>
 </dl>
 <div class="divider"><div></div></div>
 
