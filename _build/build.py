@@ -229,7 +229,7 @@ def bloco_contato(alt=False):
       <dl>
         <div><dt>WhatsApp</dt><dd><a href="{WA}" target="_blank" rel="noopener">{FONE_EXIBE}</a></dd></div>
         <div><dt>E-mail</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div>
-        <div><dt>Instagram</dt><dd><a href="{INSTAGRAM}" target="_blank" rel="noopener">@fernandawerner.adv</a></dd></div>
+        <div><dt>Instagram</dt><dd><a href="{INSTAGRAM}" target="_blank" rel="noopener">@fernandameira.adv</a></dd></div>
         <div><dt>Escritório</dt><dd>{CIDADE}</dd></div>
       </dl>
       <p class="privacy">Comunicações relativas ao exercício da advocacia são invioláveis (Lei 8.906/1994, art. 7º, II) e protegidas pelo dever de sigilo profissional (Código de Ética e Disciplina da OAB, arts. 35 a 38).</p>
