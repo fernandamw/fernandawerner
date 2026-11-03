@@ -138,21 +138,6 @@
     });
   }
 
-  /* ---------- Transição entre páginas (reserva para navegadores sem view transitions) ---------- */
-  if (!('startViewTransition' in document) && !reduce) {
-    document.querySelectorAll('a[href]').forEach(function (a) {
-      var u = a.getAttribute('href');
-      if (!u || /^(https?:|mailto:|tel:|#)/.test(u) || a.target === '_blank') return;
-      a.addEventListener('click', function (e) {
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
-        e.preventDefault();
-        root.classList.add('leaving');
-        setTimeout(function () { location.href = a.href; }, 260);
-      });
-    });
-    window.addEventListener('pageshow', function () { root.classList.remove('leaving'); });
-  }
-
   /* ---------- Abas: situações e fases ---------- */
   document.querySelectorAll('[data-tabs]').forEach(function (box) {
     var tabs = [].slice.call(box.querySelectorAll('[role="tab"]'));

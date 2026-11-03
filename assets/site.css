@@ -527,7 +527,6 @@ a.topic { text-decoration: none; }
 ::view-transition-new(root) { animation: 0.38s ease-out both vt-in; }
 @keyframes vt-out { to { opacity: 0; transform: translateY(-6px); } }
 @keyframes vt-in { from { opacity: 0; transform: translateY(8px); } }
-.js.leaving main, .js.leaving .credentials, .js.leaving .footer { opacity: 0; transform: translateY(-6px); transition: opacity 0.28s ease, transform 0.28s ease; }
 
 /* ---------- Abertura cinematográfica (só na página inicial) ---------- */
 .hero h1 .line { display: block; overflow: hidden; padding-bottom: 0.06em; margin-bottom: -0.06em; }
