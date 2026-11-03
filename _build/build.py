@@ -25,7 +25,7 @@ from pathlib import Path
 BUILD = Path(__file__).resolve().parent
 REPO = BUILD.parent
 
-SITE = "https://fernandameira.adv.br"   # trocar para o domínio antigo se publicar antes do registro
+SITE = "https://fernandawerner.adv.br"   # trocar para https://fernandameira.adv.br quando o domínio novo estiver registrado e no CNAME
 NOME = "Fernanda Meira"
 NOME_OAB = "Fernanda Meira Werner"   # nome do cadastro na OAB; só nos dados estruturados
 ESCRITORIO = "Fernanda Meira — Advocacia Criminal Federal"

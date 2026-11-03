@@ -48,4 +48,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://fernandameira.adv.br/sitemap.xml
+Sitemap: https://fernandawerner.adv.br/sitemap.xml
