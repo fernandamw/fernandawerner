@@ -21,7 +21,7 @@ Site estático publicado pelo GitHub Pages a partir da branch `main` (domínio e
 
 ## Regras de conteúdo
 
-- Nome profissional visível: sempre "Fernanda Werner" (voltou de "Fernanda Meira" em 09/11/2026). O Instagram segue @fernandameira.adv até ela renomear. O nome de cadastro na OAB, "Fernanda Meira Werner", só nos dados estruturados. OAB/SC 69.022.
+- Nome profissional visível: sempre "Fernanda Werner" (voltou de "Fernanda Meira" em 09/11/2026). Instagram: @fernandawerner.adv. O nome de cadastro na OAB, "Fernanda Meira Werner", só nos dados estruturados. OAB/SC 69.022.
 - Publicidade da advocacia (Provimento 205/2021 do CFOAB e CED, arts. 39 a 47): texto informativo e sóbrio; sem promessa de resultado, sem casos concretos, sem valores de honorários, sem expressões persuasivas ou de autoengrandecimento, sem chamadas de urgência.
 - Toda citação legal ou de súmula deve ser conferida na fonte oficial antes de entrar. Não citar jurisprudência não verificada.
 - Sem emojis. Evitar "precisão/precisamente", "repousa", "crucial", "vale ressaltar". *Habeas Corpus* em itálico e com iniciais maiúsculas. Cargos com iniciais maiúsculas. Sempre "Advogada Criminalista" e "Tribunais Superiores" com iniciais maiúsculas.
