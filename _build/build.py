@@ -25,10 +25,10 @@ from pathlib import Path
 BUILD = Path(__file__).resolve().parent
 REPO = BUILD.parent
 
-SITE = "https://fernandawerner.adv.br"   # trocar para https://fernandameira.adv.br quando o domínio novo estiver registrado e no CNAME
-NOME = "Fernanda Meira"
+SITE = "https://fernandawerner.adv.br"
+NOME = "Fernanda Werner"
 NOME_OAB = "Fernanda Meira Werner"   # nome do cadastro na OAB; só nos dados estruturados
-ESCRITORIO = "Fernanda Meira — Advocacia Criminal Federal"
+ESCRITORIO = "Fernanda Werner — Advocacia Criminal Federal"
 OAB = "OAB/SC 69.022"
 FONE_EXIBE = "(47) 3170-2300"
 FONE_E164 = "+554731702300"
@@ -82,9 +82,9 @@ def sem_tags(s):
 def pessoa():
     return {
         "@type": "Person",
-        "@id": f"{SITE}/#fernanda-meira",
+        "@id": f"{SITE}/#fernanda-werner",
         "name": NOME,
-        "alternateName": [NOME_OAB, "Fernanda Werner"],
+        "alternateName": [NOME_OAB, "Fernanda Meira"],
         "jobTitle": "Advogada Criminalista",
         "description": ("Advogada Criminalista inscrita na OAB/SC sob o nº 69.022, com escritório em "
                         "Balneário Camboriú/SC. Atua na defesa em crimes de competência federal."),
@@ -132,8 +132,8 @@ def escritorio():
         "areaServed": [{"@type": "Country", "name": "Brasil"},
                        {"@type": "State", "name": "Santa Catarina"},
                        {"@type": "City", "name": "Balneário Camboriú"}],
-        "founder": {"@id": f"{SITE}/#fernanda-meira"},
-        "employee": {"@id": f"{SITE}/#fernanda-meira"},
+        "founder": {"@id": f"{SITE}/#fernanda-werner"},
+        "employee": {"@id": f"{SITE}/#fernanda-werner"},
         "knowsAbout": ["Advocacia criminal", "Crimes federais", "Operações da Polícia Federal", "Defesa criminal de médicos"],
         "sameAs": [INSTAGRAM],
         "contactPoint": {"@type": "ContactPoint", "contactType": "Atendimento", "telephone": FONE_E164,
@@ -306,7 +306,7 @@ def moldura(meta, corpo, nos_schema, previa):
 <a class="skip" href="#conteudo">Ir para o conteúdo</a>
 {progresso}
 <header class="nav{solid}" id="nav">
-  <a href="{{{{root}}}}" class="brand" aria-label="Fernanda Meira, início">Fernanda <em>Meira</em></a>
+  <a href="{{{{root}}}}" class="brand" aria-label="Fernanda Werner, início">Fernanda <em>Werner</em></a>
   <nav aria-label="Principal"><ul class="nav-links">{links}</ul></nav>
   <a href="{WA}" target="_blank" rel="noopener" class="btn nav-cta">Contato</a>
   <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-panel"><span></span><span></span><span></span></button>
@@ -324,12 +324,12 @@ def moldura(meta, corpo, nos_schema, previa):
 <footer class="footer">
   <div class="wrap">
     <div class="top">
-      <div><span class="brand">Fernanda <em>Meira</em></span><span class="ref">Advocacia Criminal Federal · {OAB} · {CIDADE}</span></div>
+      <div><span class="brand">Fernanda <em>Werner</em></span><span class="ref">Advocacia Criminal Federal · {OAB} · {CIDADE}</span></div>
       <ul class="footer-nav">{rodape}</ul>
     </div>
     <div class="legal">
       <p>O conteúdo deste site tem caráter informativo e não substitui a análise individual de cada caso por advogado.</p>
-      <p>© 2026 Fernanda Meira. {OAB}.</p>
+      <p>© 2026 Fernanda Werner. {OAB}.</p>
     </div>
   </div>
 </footer>
@@ -433,7 +433,7 @@ def gerar(saida, previa):
                      "inLanguage": "pt-BR", "isPartOf": {"@id": f"{SITE}/#site"},
                      "about": {"@id": f"{SITE}/#escritorio"}}
         if meta.get("schema_type") == "ProfilePage":
-            pagina_no["mainEntity"] = {"@id": f"{SITE}/#fernanda-meira"}
+            pagina_no["mainEntity"] = {"@id": f"{SITE}/#fernanda-werner"}
         if meta.get("schema_type") == "FAQPage":
             pagina_no["mainEntity"] = [
                 {"@type": "Question", "name": sem_tags(it["q"]),
@@ -464,7 +464,7 @@ def gerar(saida, previa):
   <div class="wrap">
     <ol class="crumbs"><li><a href="{{{{root}}}}">Início</a></li><li><a href="{{{{root}}}}artigos/">Artigos</a></li><li><a href="{{{{root}}}}{a["categoria"]}/">{cat_nome}</a></li></ol>
     <h1>{a["titulo"]}</h1>
-    <p class="byline"><span>Por <a href="{{{{root}}}}sobre/">Fernanda Meira</a>, Advogada Criminalista, {OAB}</span><span><time datetime="{a["data"]}">{data_extenso(a["data"])}</time></span><span>Leitura de {minutos} min</span></p>
+    <p class="byline"><span>Por <a href="{{{{root}}}}sobre/">Fernanda Werner</a>, Advogada Criminalista, {OAB}</span><span><time datetime="{a["data"]}">{data_extenso(a["data"])}</time></span><span>Leitura de {minutos} min</span></p>
   </div>
 </section>
 <div class="wrap article">
@@ -485,9 +485,9 @@ def gerar(saida, previa):
       <ul>{base}</ul>
     </div>
     <div class="author">
-      <img src="{{{{root}}}}assets/fernanda-werner-retrato.jpg" alt="Fernanda Meira" width="80" height="80" loading="lazy">
+      <img src="{{{{root}}}}assets/fernanda-werner-retrato.jpg" alt="Fernanda Werner" width="80" height="80" loading="lazy">
       <div>
-        <div class="name">Fernanda Meira</div>
+        <div class="name">Fernanda Werner</div>
         <p>Advogada Criminalista, {OAB}, com escritório em {CIDADE}. Atua em crimes de competência federal. <a href="{{{{root}}}}sobre/">Perfil completo</a></p>
       </div>
     </div>
@@ -510,7 +510,7 @@ def gerar(saida, previa):
             "datePublished": a["data"], "dateModified": a.get("atualizado", a["data"]),
             "inLanguage": "pt-BR", "articleSection": a.get("serie") or cat_nome,
             "image": f"{SITE}/assets/og.jpg",
-            "author": {"@id": f"{SITE}/#fernanda-meira"},
+            "author": {"@id": f"{SITE}/#fernanda-werner"},
             "publisher": {"@id": f"{SITE}/#escritorio"},
             "isPartOf": {"@id": f"{SITE}/#site"},
         }, migalhas([("", "Início"), ("artigos/", "Artigos"), (caminho, a["titulo"])])]
@@ -541,7 +541,7 @@ def gerar(saida, previa):
     (saida / "robots.txt").write_text("\n".join(rb), encoding="utf-8")
 
     ll = [f"# {ESCRITORIO}", "",
-          "> Fernanda Meira é Advogada Criminalista, inscrita na OAB/SC sob o nº 69.022, com escritório em "
+          "> Fernanda Werner é Advogada Criminalista, inscrita na OAB/SC sob o nº 69.022, com escritório em "
           "Balneário Camboriú/SC. Atua na defesa em crimes de competência federal: investigações da Polícia "
           "Federal, ações penais na Justiça Federal e recursos ao TRF-4, ao STJ e ao STF. Atendimento presencial "
           "em Balneário Camboriú e por videoconferência em todo o Brasil.",
@@ -564,7 +564,7 @@ def gerar(saida, previa):
           "## Páginas principais", "",
           f"- [Crimes federais]({SITE}/crimes-federais/): matérias, fases do processo e onde os casos tramitam",
           f"- [Defesa criminal de médicos]({SITE}/defesa-criminal-de-medicos/): situações atendidas e relação entre as esferas criminal, ética e cível",
-          f"- [Sobre]({SITE}/sobre/): perfil profissional de Fernanda Meira",
+          f"- [Sobre]({SITE}/sobre/): perfil profissional de Fernanda Werner",
           f"- [Perguntas frequentes]({SITE}/perguntas-frequentes/): respostas diretas, com a base legal",
           "",
           "## Artigos", ""]
